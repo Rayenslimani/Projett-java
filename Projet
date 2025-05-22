@@ -1,0 +1,30 @@
+import ma.projet.beans.Client;
+import service.ClientService;
+
+public class Main {
+    public static void main(String[] args) {
+        ClientService cs = new ClientService();
+
+        // Créer 5 clients
+        cs.create(new Client("Ali", "Bouzid"));
+        cs.create(new Client("Fatima", "Hajji"));
+        cs.create(new Client("Sami", "Nouiri"));
+        cs.create(new Client("Sara", "Lahmiri"));
+        cs.create(new Client("Omar", "Yassir"));
+
+        // Afficher client id = 3
+        System.out.println("Client avec ID 3: " + cs.findById(3));
+
+        // Supprimer client id = 3
+        cs.delete(new Client(3, "", ""));
+
+        // Modifier client id = 2
+        cs.update(new Client(2, "FatimaZahra", "Hajji"));
+
+        // Afficher tous les clients
+        System.out.println("Liste des clients:");
+        for (Client c : cs.findAll()) {
+            System.out.println(c);
+        }
+    }
+}
